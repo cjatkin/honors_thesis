@@ -1,0 +1,9 @@
+What I need:
+
+- a file for the base architecture of the gui
+- a windows manager file
+
+- redis to pynq redis client
+- gui with redis command box
+- gui with labeled redis commands 
+- gui plotting
