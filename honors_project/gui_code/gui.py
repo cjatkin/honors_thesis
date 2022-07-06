@@ -31,25 +31,23 @@ tabControl.pack(expand=1, fill = 'both')
 ##################################################
 
 ##################################################
-#Code for tab1 items
-ttk.Label(tab1, text="Commander Page").grid(column = 0, row = 0, padx = 30, pady = 30)
-'''
-text = Text(tab1)
-text.pack(fill="both", expand=True)
-'''
-'''
-input_text = StringVar()
-entry1 = ttk.Entry(tab1, textvariable = input_text, justify = CENTER)
-entry1.focus_force()
-entry1.pack(side = TOP, ipadx = 30, ipady = 6)
-'''
+#Code for tab1 widgets -> Commander Page
+label_1 = ttk.Label(tab1, text="Commander Page").grid(column = 0, row = 0, padx = 30, pady = 30)
 
-#ttk.combobox(tab1, text = "Enter commands here")
+command_msg = tk.StringVar()
+msg_box = ttk.Entry(tab1,textvariable=command_msg).grid(column = 0, row=1, padx = 15, pady=15)
+msg_box.focus()
+print(command_msg)
+
+btn_msg = ttk.Button(tab1, text="Press to connect!").grid(column=0,row=2,padx=15,pady=15)
 ##################################################
+
 
 #################################################
 #Code for tab2 items
-ttk.Label(tab2, text = "Drone Page").grid(column = 0, row = 0, padx = 30, pady = 30)
+label_2 = ttk.Label(tab2, text = "Drone Page").grid(column = 0, row = 0, padx = 30, pady = 30)
+
+
 #################################################
 
 ################################################
