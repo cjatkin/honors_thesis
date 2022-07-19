@@ -9,7 +9,7 @@ root = tk.Tk() #creating parent window
 root.title("Experimentation GUI")
 
 #code for items in main GUI
-title = tk.Label(root, text="Communication GUI")
+title = tk.Label(root, text="GUI TITLE")
 title.pack()
 
 
@@ -31,53 +31,31 @@ tabControl.pack(expand=1, fill = 'both')
 ##################################################
 
 ##################################################
-
-
 #Code for tab1 widgets -> Commander Page
-label_1 = ttk.Label(tab1, text="Commander Page")
-label_1.grid(row=0, column=0, sticky='nw')
-#label_1.pack(side='left')
+label_1 = ttk.Label(tab1, text="Commander Page").grid(column = 0, row = 0, padx = 30, pady = 30)
+btn_connect = ttk.Button(tab1, text="Press to connect!").grid(column=0,row=1,padx=15,pady=15)
 
-label_exp_1 = ttk.Label(tab1, text="brief explanation of commander page")
-label_exp_1.grid(row=1, column=0, sticky='nw')
-
-label_box = ttk.Label(tab1, text="List of commands:")
-label_box.grid(row=4, column=0, sticky='sw')
-
-
-
-command_text = tk.Text(tab1, height=10)
-command_text.grid(row=5, column=0, sticky=tk.EW)
-command_text.config(state='disabled')
-
-btn_connect = ttk.Button(tab1, text="Press to connect!")
-btn_connect.grid(row=5, column=2)
-
-label_msg = ttk.Label(tab1, text='Enter commands here:')
-label_msg.grid(row=8, column=0)
 
 command_msg = tk.StringVar()
-msg_box = ttk.Entry(tab1, textvariable=command_msg)
-msg_box.grid(row=9, column = 0, padx = 15, pady=15)
+msg_box = ttk.Entry(tab1,textvariable=command_msg).grid(column = 0, row=2, padx = 15, pady=15)
 
 def send():
     command_sent = command_msg.get()
     print("the command was: " + command_sent)
 
 
-btn_send = Button(tab1,text="Send",command=send)
-btn_send.grid(row=9, column=1)
+btn_send = Button(tab1,text="Send",command=send).grid(row=2, column=1)
 
 #creating text widget that holds commands
-
+command_text = tk.Text(tab1, height=10)
+command_text.grid(column = 0, row = 4,sticky=tk.EW)
+command_text.config(state='disabled')
 #creating scroll bar widget and  set its command to text widget
 #scrollbar = ttk.Scrollbar(tab1, orient='vertical', command=text.yview).grid(row=4, column=1, sticky=tk.NS)
 #text['yscrollcommand'] = scrollbar.set
 #scrollbar.config(command=text.yview)
 
 #just fills the text box with text
-
-
 '''
 for i in range(1,50):
     position = f'{1}.0'
@@ -114,3 +92,4 @@ window = Tk()
 window.title("hello header")
 window.mainloop()
 '''
+
