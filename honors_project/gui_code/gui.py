@@ -73,8 +73,19 @@ btn_send.grid(row=10, column=0,sticky='w')
 #Code for tab2 items
 label_2 = ttk.Label(tab2, text = "Drone Page", font=('tnr',20))
 label_2.grid(column = 0, row = 0, sticky='nw')
-output_box = ttk.Label()
+
+output_box = tk.Text(tab2, height=10)
+output_box.grid(row=5, column=0, sticky='ew')
+output_box.config(state='normal')
+output_box.insert(INSERT, "testing")
+output_box.config(state='disable')
+output_box.config(state='normal')
+output_box.insert(INSERT,"\ntesting 2")
 #################################################
+
+
+
+
 
 ################################################
 #Code for tab3 items
