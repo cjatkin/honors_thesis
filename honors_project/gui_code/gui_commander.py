@@ -1,46 +1,53 @@
-##################################################################################
-#CommanderFun.py
-#Sends command to DroneFun.py using fun.json file value keys
-##################################################################################
+#commander code for gui to connect to
+#from gui import ip_address_entered
+#the... .commands??
+
 import redis
 import sys
 import json
 from time import sleep
-import fun as foo
+#import fun as foo
+import goo as foo
 import subprocess
+#from gui import get_ip
 
+def hello():
+    print("hello from commander!")
 
-# PART 1 ##################################################
-# load firmware config
-# lambda method use for general purpose firmware loading
-f="fun" # can be a user input
-jsonpath= lambda name : "./"  + name + ".json"
-cmdpath = lambda name : "./"  + name + ".py"
+'''
+def connect(ip_address):
+    #ip_address_entered = ip_address.get()
+    #ip_address = get_ip()
+    print(ip_address)
+    print('connect pressed')
+'''
+def commands_list():
+    # load firmware config
+    # lambda method use for general purpose firmware loading
+    f = "goo" # can be a user input
+    jsonpath = lambda name : "./" + name + "/" + name + ".json"
+    cmdpath = lambda name : "./" + name + "/" + name + ".py"
 
-# Reading JSON File
-with open(jsonpath(f),'r') as cmdlist:
-    command_obj=cmdlist.read()
-command_dict=json.loads(command_obj)
+    # Reading JSON File
+    with open(jsonpath(f),'r') as cmdlist:
+        command_obj = cmdlist.read()
+    command_dict = json.loads(command_obj)
+    #connects variable command_dict to fun.py/.json and can be used to reference
+    #   either file
 
-
-#######################################################################
-#Redis Connection######################################################
-#######################################################################
-
-r = redis.Redis(host = '192.168.10.229') #replace 'localhost' with desired ip address
-p = r.pubsub(ignore_subscribe_messages = True)
-
-####################################################################
-#Connect to redis channel###########################################
-####################################################################
+    # PART 3 ##################################################
+    print("Command List:")
+    print(35*"-")
+    for c in command_dict:
+        print(f"{c} | cmd: {command_dict[c]} ") #will only have one command (00: funHello)
+    print("\n")
 
 def check_chnls():
     chnls_open = r.pubsub_channels()
     chnls_open = [chnl.decode() for chnl in chnls_open]
     return chnls_open
 
-# PART 4 - FUNCTION 2 ###################################
-def usrInput():
+def userInput():
     chnls_open = check_chnls()
     print(f"Open channels: \'{chnls_open}\'...")
 
@@ -103,5 +110,26 @@ def usrInput():
             print("Invalid input")
     print("Exiting Commander")
 
-# PART 5 ##############################################################
-usrInput()
+'''
+def get_ip():
+    return str(input("\nEnter ip address: "))
+'''
+#this function connects and subscribes user to redis channel
+
+
+def connect(ip_address):
+
+    print(ip_address)
+    print('connect pressed')
+
+    chnl ="python-channel"
+    chnl2 = "borg"
+    print(f"Subscribing to \'{chnl}\'...")
+
+    r = redis.Redis(host=ip_address)
+    p = r.pubsub(ignore_subscribe_messages=True)
+    p.subscribe(chnl)			#drone subscribes to channel here
+    print(f"Subscribed to \'{chnl}\'.\n")
+
+
+    userInput()

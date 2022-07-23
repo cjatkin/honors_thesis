@@ -45,7 +45,7 @@ print("\n")
 chnl ="python-channel"
 chnl2 = "borg"
 print(f"Subscribing to \'{chnl}\'...")
-r = redis.Redis(host = '192.168.1.28')
+r = redis.Redis(host = '192.168.10.229')
 p = r.pubsub(ignore_subscribe_messages=True)	#the messages for sub/unsub are read but won't send confirmation messages
 p.subscribe(chnl)			#drone subscribes to channel here
 print(f"Subscribed to \'{chnl}\'.\n")
