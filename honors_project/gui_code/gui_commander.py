@@ -117,7 +117,7 @@ def get_ip():
 #this function connects and subscribes user to redis channel
 
 
-def connect(ip_address):
+def connect_commander(ip_address):
 
     print(ip_address)
     print('connect pressed')
@@ -126,10 +126,11 @@ def connect(ip_address):
     chnl2 = "borg"
     print(f"Subscribing to \'{chnl}\'...")
 
+
+    #code currently gets lost below here,
     r = redis.Redis(host=ip_address)
     p = r.pubsub(ignore_subscribe_messages=True)
     p.subscribe(chnl)			#drone subscribes to channel here
     print(f"Subscribed to \'{chnl}\'.\n")
-
 
     userInput()

@@ -94,7 +94,7 @@ btn_ip.grid(row=10,column =0,sticky='w')
 
 def connect_press():
     ip_address_con = get_ip()
-    connect(ip_address_con)
+    connect_commander(ip_address_con)
 
 
 

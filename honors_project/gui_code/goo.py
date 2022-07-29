@@ -1,2 +1,2 @@
-def hello_there:
+def hello_there():
     print("general kenobi")
